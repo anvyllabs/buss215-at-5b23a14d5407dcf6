@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="robots" content="noindex, nofollow">
+<title>AnvylTube · Anvyl Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script>
+/* ===== HEADER: change this one block to switch brand vs course-first ===== */
+const HEADER = {
+  variant: "anvyl-first",
+  title: "AnvylTube",
+  byline: "by Anvyl Labs",
+  subline: "BUSS215-06·07 · Prof. KyungBae Park",
+  docTitle: "AnvylTube · Anvyl Labs · BUSS215",
+  footerSupport: ""  // unused in anvyl-first
+};
+/* Course-first alternate (comment in / out to switch):
+const HEADER = {
+  variant: "course-first",
+  title: "BUSS215 · Prof. KyungBae Park",
+  byline: "AnvylTube",
+  subline: "",
+  docTitle: "BUSS215 · AnvylTube · Prof. KyungBae Park",
+  footerSupport: "Production support: Anvyl Labs"
+};
+*/
+</script>
+<script src="cards.js"></script>
+<style>
+:root {
+  --bg: #0A0A0C;
+  --surface: #121215;
+  --card: #18181C;
+  --border: rgba(255,255,255,0.06);
+  --text: #F2F2F0;
+  --text-muted: rgba(242, 242, 240, 0.65);
+  --text-faint: rgba(242, 242, 240, 0.45);
+  --warm: #CC785C;
+  --warm-light: #E8A878;
+  --warm-soft: rgba(204, 120, 92, 0.15);
+  --teal: #5BA4B5;
+  --teal-soft: rgba(91, 164, 181, 0.12);
+  --lavender: #8B7EC8;
+  --lavender-soft: rgba(139, 126, 200, 0.14);
+  --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:var(--font-body);line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--warm);text-decoration:none}
+a:hover{color:var(--warm-light)}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+header{border-bottom:1px solid var(--border);background:rgba(10,10,12,0.92);backdrop-filter:blur(16px);position:sticky;top:0;z-index:10}
+.hd{display:flex;align-items:center;gap:14px;padding:16px 0;min-height:64px}
+.mark{flex:none;display:flex;align-items:center}
+.mark svg{display:block;width:30px;height:31px}
+.ht{font-family:var(--font-display);font-size:22px;font-weight:700;letter-spacing:-0.6px;line-height:1.1}
+.ht .by{font-size:13px;font-weight:300;color:var(--text-muted);margin-left:8px;letter-spacing:0}
+.hs{font-family:var(--font-display);font-size:13px;font-weight:500;color:var(--text-muted);margin-top:3px}
+.pilot{
+  margin-left:auto;font-size:12px;font-weight:600;font-family:var(--font-display);
+  color:var(--warm);border:1px solid var(--warm);padding:6px 12px;border-radius:999px;
+  background:transparent;letter-spacing:0.02em;
+}
+.hero{padding:36px 0 8px}
+.hero h1{
+  font-family:var(--font-display);font-size:34px;font-weight:700;
+  margin:0 0 10px;letter-spacing:-0.8px;line-height:1.2;
+}
+.hero .lede{margin:0;color:var(--text-muted);font-size:16px;max-width:52rem}
+.hero .credit{margin:16px 0 0;font-size:15px;color:var(--text-muted);max-width:52rem;line-height:1.5}
+.hero .credit a{font-weight:600}
+.howto{margin-top:22px;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 18px}
+.howto h3{margin:0 0 8px;font-family:var(--font-display);font-size:14px;font-weight:600;color:var(--text)}
+.howto ol{margin:0;padding-left:18px;color:var(--text-muted);font-size:14px}
+.filters{display:flex;gap:18px;align-items:flex-end;flex-wrap:wrap;padding:22px 0 10px;position:sticky;top:64px;background:var(--bg);z-index:5}
+.fg label{display:block;font-size:12px;font-weight:600;color:var(--text-muted);margin-bottom:6px;font-family:var(--font-display);letter-spacing:0.04em;text-transform:uppercase}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{
+  border:1px solid var(--border);background:var(--card);color:var(--text-muted);
+  border-radius:999px;padding:6px 12px;font-size:13.5px;cursor:pointer;font-family:inherit;
+  transition:background .15s,color .15s,border-color .15s;
+}
+.chip:hover{color:var(--text);border-color:rgba(255,255,255,0.14)}
+.chip.on{background:var(--warm);color:#0A0A0C;border-color:var(--warm);font-weight:600}
+select{
+  font-family:inherit;font-size:14px;padding:7px 10px;border-radius:10px;
+  border:1px solid var(--border);background:var(--card);color:var(--text);
+}
+.count{margin-left:auto;font-size:13.5px;color:var(--text-muted)}
+.count b{color:var(--warm);font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding:10px 0 36px}
+.card{
+  background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;
+  cursor:pointer;display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s,border-color .15s;
+  min-height:100%;
+}
+.card:hover{transform:translateY(-2px);border-color:rgba(204,120,92,0.35);box-shadow:0 12px 32px rgba(0,0,0,.35)}
+.th{position:relative;aspect-ratio:16/9;background:#121215 center/cover no-repeat;flex:none}
+.th .rk{position:absolute;left:10px;top:10px;background:rgba(10,10,12,.78);color:var(--text);font-size:12px;font-weight:700;padding:2px 8px;border-radius:6px;font-family:var(--font-display)}
+.th .play{position:absolute;inset:0;display:grid;place-items:center}
+.th .play i{width:54px;height:38px;border-radius:12px;background:rgba(10,10,12,.7)}
+.th .play i:after{content:"";display:block;margin:11px auto;width:0;height:0;border-left:16px solid #fff;border-top:9px solid transparent;border-bottom:9px solid transparent;transform:translateX(3px)}
+.cb{padding:14px;display:flex;flex-direction:column;gap:8px;flex:1}
+.ti{font-family:var(--font-display);font-weight:600;font-size:14.5px;line-height:1.35;letter-spacing:-0.2px}
+.ch{font-size:13px;color:var(--text-muted)}
+.tags{display:flex;gap:5px;flex-wrap:wrap}
+.tg{font-size:11.5px;background:var(--warm-soft);color:var(--warm-light);padding:2px 8px;border-radius:6px;font-weight:600;font-family:var(--font-display)}
+.tg.level{background:var(--teal-soft);color:var(--teal)}
+.tg.type{background:var(--lavender-soft);color:var(--lavender)}
+.tg.g{background:rgba(255,255,255,0.05);color:var(--text-muted)}
+.lines{font-size:13.5px;color:var(--text-muted);margin:2px 0 0;padding-left:16px}
+.lines li{margin:2px 0}
+.draft{font-size:13px;color:var(--text-faint);font-style:italic}
+.badge{align-self:flex-start;font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:999px;font-family:var(--font-display)}
+.badge.ok{background:rgba(91,164,181,0.16);color:var(--teal)}
+.badge.wait{background:rgba(232,168,120,0.12);color:var(--warm-light)}
+.wk{font-size:12px;color:var(--text-faint);margin-top:auto}
+.about,.built{
+  background:var(--surface);border:1px solid var(--border);border-radius:16px;
+  padding:22px 24px;margin:0 0 22px;
+}
+.about h2,.built h2{
+  font-family:var(--font-display);font-size:18px;font-weight:700;margin:0 0 12px;letter-spacing:-0.3px;
+}
+.about h3,.built h3{
+  font-family:var(--font-display);font-size:14px;font-weight:600;margin:16px 0 6px;color:var(--warm-light);
+}
+.about p,.built p,.about li,.built li{font-size:14.5px;color:var(--text-muted);margin:0 0 8px}
+.about ul,.built ul{margin:0;padding-left:18px}
+.flow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:10px 0 4px}
+.flow span{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:6px 10px;font-size:13.5px;font-weight:500}
+.flow b{color:var(--warm);font-weight:700}
+.flow i{color:var(--text-faint);font-style:normal}
+.placeholder{
+  border:1px dashed rgba(204,120,92,0.45);border-radius:12px;padding:14px 16px;
+  background:rgba(204,120,92,0.06);color:var(--text-muted);font-size:14px;
+}
+.placeholder strong{color:var(--warm-light);font-family:var(--font-display)}
+.handoff{margin:8px 0 28px;font-family:var(--font-display);font-size:16px;font-weight:600}
+.handoff a{color:var(--warm)}
+footer{border-top:1px solid var(--border);padding:22px 0 32px;font-size:13px;color:var(--text-muted)}
+footer .pilotline{font-weight:600;color:var(--text);margin-bottom:8px;font-family:var(--font-display)}
+footer .support{margin-top:10px;display:flex;align-items:center;gap:10px;color:var(--text-muted)}
+footer .support svg{width:22px;height:23px}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;align-items:center;justify-content:center;z-index:20;padding:24px}
+.ov.on{display:flex}
+.md{background:var(--card);border:1px solid var(--border);border-radius:18px;width:min(1180px,100%);max-height:94vh;overflow:auto;display:grid;grid-template-columns:1.45fr 1fr}
+.ml{padding:22px}
+.mr{padding:22px;border-left:1px solid var(--border);background:var(--surface);align-self:start}
+.vid{aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000 center/cover no-repeat;position:relative;cursor:pointer}
+.vid iframe{width:100%;height:100%;border:0}
+.vid .play i{width:72px;height:50px}
+.vid .play i:after{margin:15px auto;border-left-width:22px;border-top-width:11px;border-bottom-width:11px}
+.mt{font-family:var(--font-display);font-size:21px;font-weight:700;margin:14px 0 2px;line-height:1.3;letter-spacing:-0.3px}
+.sec{margin-top:14px}
+.sec h4{margin:0 0 6px;font-size:12px;color:var(--text-muted);letter-spacing:.06em;text-transform:uppercase;font-family:var(--font-display)}
+.sec .lines{font-size:15px;color:var(--text)}
+.why{font-size:14.5px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:10px;padding:10px 12px;color:var(--text-muted)}
+.meta{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14px}
+.meta dt{color:var(--text-muted)}
+.meta dd{margin:0;font-weight:600}
+.rv h3{margin:0 0 4px;font-size:16px;font-family:var(--font-display)}
+.rv .st{font-size:13px;color:var(--text-muted);margin-bottom:12px}
+.ck{display:flex;gap:10px;align-items:flex-start;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:10px 12px;margin-bottom:8px}
+.ck .bx{flex:none;width:22px;height:22px;border-radius:6px;border:2px solid rgba(255,255,255,0.18);display:grid;place-items:center;font-size:14px;color:#0A0A0C;font-weight:900}
+.ck.on .bx{background:var(--teal);border-color:var(--teal)}
+.ck b{display:block;font-size:14px;font-family:var(--font-display)}
+.ck span{font-size:12.5px;color:var(--text-muted)}
+.src{font-size:12.5px;color:var(--text-muted);margin-top:12px;border-top:1px dashed var(--border);padding-top:10px}
+.src details summary{cursor:pointer;font-weight:600;color:var(--warm)}
+.x{position:absolute;right:18px;top:14px;font-size:26px;cursor:pointer;color:#fff;background:none;border:0}
+.note{font-size:12.5px;color:var(--warm-light);background:var(--warm-soft);border-radius:8px;padding:7px 10px;margin-top:10px}
+.empty{grid-column:1/-1;padding:40px;text-align:center;color:var(--text-muted);border:1px dashed var(--border);border-radius:14px}
+@media (max-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}.md{grid-template-columns:1fr}}
+@media (max-width:760px){.grid{grid-template-columns:1fr 1fr}.hero h1{font-size:26px}.filters{top:0}}
+@media (max-width:520px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="wrap hd">
+  <div class="mark" aria-hidden="true">
+    <svg viewBox="0 0 60 62" width="30" height="31" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="19" cy="11" r="3" fill="#F2F2F0"/>
+      <circle cx="37" cy="11" r="3" fill="#F2F2F0"/>
+      <path d="M 24.5 3 L 31.5 3 L 30.5 5.5 L 29 6.2 L 28.8 13 L 28 16 L 27.2 13 L 27 6.2 L 25.5 5.5 Z" fill="#F2F2F0"/>
+      <path d="M 12 16 L 26.5 16 L 26.5 20 L 12 20 Z" fill="#F2F2F0"/>
+      <path d="M 14 20 L 26.5 20 L 26.5 38 L 11 38 Z" fill="#F2F2F0"/>
+      <path d="M 6 38 L 26.5 38 L 26.5 45 L 4 45 Z" fill="#F2F2F0"/>
+      <path d="M 8 45 L 26.5 45 L 26.5 51 L 8 51 Z" fill="#F2F2F0"/>
+      <path d="M 29.5 16 L 44 16 L 44 20 L 29.5 20 Z" fill="#F2F2F0"/>
+      <path d="M 29.5 20 L 42 20 L 45 38 L 29.5 38 Z" fill="#F2F2F0"/>
+      <path d="M 29.5 38 L 50 38 L 52 45 L 29.5 45 Z" fill="#F2F2F0"/>
+      <path d="M 29.5 45 L 48 45 L 48 51 L 29.5 51 Z" fill="#F2F2F0"/>
+    </svg>
+  </div>
+  <div>
+    <div class="ht" id="hTitle"></div>
+    <div class="hs" id="hSub"></div>
+  </div>
+  <div class="pilot">2-week pilot</div>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>Generative AI videos, chosen not searched.</h1>
+    <p class="lede">Started from HackerTube's open data. Picked and reviewed for BUSS215.</p>
+    <p class="credit"><a href="https://x.com/karpathy" target="_blank" rel="noopener noreferrer">Andrej Karpathy</a> (who coined vibe coding) built <a href="https://hackertube.org" target="_blank" rel="noopener noreferrer">HackerTube</a> from Hacker News's open data. Anvyl Labs tried the same approach ourselves — here is the result.</p>
+    <div class="howto"><h3>How to use this page</h3><ol>
+      <li>Narrow by topic, level, and type.</li>
+      <li>Open a card for a short English summary and the video.</li>
+      <li>Use this as a worked example for your group project — see About below.</li>
+    </ol></div>
+  </section>
+
+  <section class="filters">
+    <div class="fg"><label>Topic</label><div class="chips" id="fTopic"></div></div>
+    <div class="fg"><label>Level</label><select id="fLevel"></select></div>
+    <div class="fg"><label>Type</label><select id="fType"></select></div>
+    <div class="count" id="cnt"></div>
+  </section>
+
+  <section class="grid" id="grid"></section>
+
+  <section class="about" id="about">
+    <h2>About this page</h2>
+    <p>A short pilot curation for Korea University BUSS215-06·07 (English-taught), Prof. KyungBae Park. Students starting a group project can treat this page as a worked example of selecting, labeling, and presenting public data.</p>
+    <h3>Selection funnel</h3>
+    <div class="flow">
+      <span>HackerTube open list <b>6,454</b></span><i>→</i>
+      <span>AI area <b>576</b></span><i>→</i>
+      <span>Generative-AI pilot <b id="nSel">0</b></span><i>→</i>
+      <span>Reviewed cards <b id="nReady">0</b></span>
+    </div>
+    <p style="margin-top:10px">Score used for ranking: <b style="color:var(--warm)">rec_months + 0.5 × strong-recommendation months</b>. News items and a short exclusion list are dropped; evergreen titles are preferred.</p>
+  </section>
+
+  <section class="built" id="how-built">
+    <h2>How this was built</h2>
+    <h3>1. Data</h3>
+    <p>Public HackerTube dataset (Andrej Karpathy): ~43M Hacker News comments (2007–2026) scanned for YouTube links. A comment counts only with 100+ characters of its own text. Kept videos mentioned by at least 3 different people in at least 3 different months → about 6,454 videos under ODC-By 1.0.</p>
+    <h3>2. Our selection rule for this pilot</h3>
+    <p><code>select.py</code> keeps AI-area titles (llms-generative-ai, or machine-learning with generative-AI keywords), drops news shelf-life / news content-type and a fixed exclusion set, then sorts evergreen first and by score descending. Topics are assigned with keyword rules into five course-facing groups.</p>
+    <h3>3. What AI did vs what humans decided</h3>
+    <ul>
+      <li><b>AI:</b> comment labeling upstream, English summaries / why-lines in the source cards, and draft three-line card text.</li>
+      <li><b>Humans:</b> pilot scope, naming and privacy rules (no HN user IDs), what to drop, review of the finished cards, and course framing.</li>
+    </ul>
+    <h3>4. Try it in your project</h3>
+    <div id="try-it" class="try-it">
+  <p style="margin:.4rem 0;">BUSS215-06·07 example: the team kept one folder as the source of truth. <strong>AGENTS.md</strong> (auto-read) sets the rules; the <strong>Core 5</strong> files hold the map, why, done-means, now-tasks, and history.</p>
+  <p style="margin:.4rem 0;">In Antigravity: first setup → AGENTS.md → P0–P5 (scope → requirements → create 6 files + 4 folders → verify → first task → continue next day in a new chat). Each work day: Start session (read <code>00_HOME</code> → <code>03_TASKS</code> → latest <code>04_WORKLOG</code> entry) → work (check the diff before saving) → End session (log unfinished items and why).</p>
+  <p style="margin:.4rem 0;">Big choices are short ADRs in <code>decisions/</code>. Tests live in <code>evidence/</code>. Agents draft; humans approve scope and anything shared.</p>
+  <p style="margin:.6rem 0 .2rem;font-size:.95rem;">Open the files:</p>
+  <ul style="margin:.2rem 0 0;padding-left:1.2rem;">
+    <li><a href="md/AGENTS.md" >AGENTS.md</a></li>
+    <li><a href="md/00_HOME.md" >00_HOME.md</a></li>
+    <li><a href="md/01_CONTEXT.md" >01_CONTEXT.md</a></li>
+    <li><a href="md/02_SPEC.md" >02_SPEC.md</a></li>
+    <li><a href="md/03_TASKS.md" >03_TASKS.md</a></li>
+    <li><a href="md/04_WORKLOG.md" >04_WORKLOG.md</a></li>
+    <li><a href="md/decisions/" >decisions/</a> · <a href="md/evidence/" >evidence/</a> · <a href="md/outputs/" >outputs/</a> · <a href="md/members/" >members/</a></li>
+  </ul>
+  </div>
+  </section>
+
+  <p class="handoff"><a href="#try-it">Now it's your team's turn.</a></p>
+</main>
+
+<footer><div class="wrap">
+  <div class="pilotline">2-week pilot; continuation decided after.</div>
+  <div>Source: HackerTube data by Andrej Karpathy (ODC-By 1.0). English cards added and edited for this pilot. Not affiliated with HackerTube or Andrej Karpathy. Video titles and channel names remain the rights of their creators.</div>
+  <div style="margin-top:6px">No login · no analytics · playback via youtube-nocookie embeds.</div>
+  <div class="support" id="footerSupport" hidden>
+    <svg viewBox="0 0 60 62" width="22" height="23" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="19" cy="11" r="3" fill="#F2F2F0"/>
+      <circle cx="37" cy="11" r="3" fill="#F2F2F0"/>
+      <path d="M 24.5 3 L 31.5 3 L 30.5 5.5 L 29 6.2 L 28.8 13 L 28 16 L 27.2 13 L 27 6.2 L 25.5 5.5 Z" fill="#F2F2F0"/>
+      <path d="M 12 16 L 26.5 16 L 26.5 20 L 12 20 Z" fill="#F2F2F0"/>
+      <path d="M 14 20 L 26.5 20 L 26.5 38 L 11 38 Z" fill="#F2F2F0"/>
+      <path d="M 6 38 L 26.5 38 L 26.5 45 L 4 45 Z" fill="#F2F2F0"/>
+      <path d="M 8 45 L 26.5 45 L 26.5 51 L 8 51 Z" fill="#F2F2F0"/>
+      <path d="M 29.5 16 L 44 16 L 44 20 L 29.5 20 Z" fill="#F2F2F0"/>
+      <path d="M 29.5 20 L 42 20 L 45 38 L 29.5 38 Z" fill="#F2F2F0"/>
+      <path d="M 29.5 38 L 50 38 L 52 45 L 29.5 45 Z" fill="#F2F2F0"/>
+      <path d="M 29.5 45 L 48 45 L 48 51 L 29.5 51 Z" fill="#F2F2F0"/>
+    </svg>
+    <span id="footerSupportText"></span>
+  </div>
+</div></footer>
+
+<div class="ov" id="ov"><button class="x" id="x" aria-label="Close">×</button><div class="md" id="md"></div></div>
+
+<script>
+const C = window.ANVYL_CARDS;
+const INTERNAL = new URLSearchParams(location.search).get('internal') === '1';
+const VISIBLE = INTERNAL ? C : C.filter(c => c.card_state === 'ready');
+
+document.getElementById('hTitle').innerHTML =
+  esc(HEADER.title) + (HEADER.byline ? ' <span class="by">' + esc(HEADER.byline) + '</span>' : '');
+document.getElementById('hSub').textContent = HEADER.subline || '';
+document.getElementById('hSub').style.display = HEADER.subline ? '' : 'none';
+document.title = HEADER.docTitle;
+if (HEADER.variant === 'course-first' && HEADER.footerSupport) {
+  const fs = document.getElementById('footerSupport');
+  fs.hidden = false;
+  document.getElementById('footerSupportText').textContent = HEADER.footerSupport;
+}
+document.getElementById('nSel').textContent = String(C.length);
+document.getElementById('nReady').textContent = String(C.filter(c => c.card_state === 'ready').length);
+
+const FEAT = 'wjZofJX0v4M';
+const TOPICS = ['All', 'LLM basics & use', 'Neural network basics', 'AI coding & agents', 'Image, video & audio generation', 'AI impact, limits & safety'];
+const LEVELS = ['All', 'Beginner', 'Intermediate', 'Advanced'];
+const TYPES = ['All', ...[...new Set(C.map(c => c.type))]];
+let st = {topic: 'All', level: 'All', type: 'All'};
+function esc(s){return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+function thumb(v){return 'https://i.ytimg.com/vi/' + v + '/hqdefault.jpg';}
+const ft = document.getElementById('fTopic');
+TOPICS.forEach(t => {
+  const b = document.createElement('button');
+  b.className = 'chip' + (t === 'All' ? ' on' : '');
+  b.textContent = t;
+  b.onclick = () => {st.topic = t; [...ft.children].forEach(x => x.classList.toggle('on', x === b)); render();};
+  ft.appendChild(b);
+});
+function fill(id, arr, key){
+  const s = document.getElementById(id);
+  arr.forEach(a => {const o = document.createElement('option'); o.textContent = a; s.appendChild(o);});
+  s.onchange = () => {st[key] = s.value; render();};
+}
+fill('fLevel', LEVELS, 'level'); fill('fType', TYPES, 'type');
+
+function badge(c){
+  if (!INTERNAL) return '';
+  if (c.review === 'sample_reviewed') return '<span class="badge ok">Sample: human-reviewed</span>';
+  return '<span class="badge wait">Review pending</span>';
+}
+
+function render(){
+  const g = document.getElementById('grid');
+  let list = VISIBLE.filter(c =>
+    (st.topic === 'All' || c.topic === st.topic) &&
+    (st.level === 'All' || c.level === st.level) &&
+    (st.type === 'All' || c.type === st.type)
+  );
+  const fi = list.findIndex(c => c.vid === FEAT);
+  if (fi > 0) list.unshift(list.splice(fi, 1)[0]);
+  document.getElementById('cnt').innerHTML = '<b>' + list.length + '</b> shown' + (INTERNAL ? ' · internal' : '');
+  if (!list.length) {
+    g.innerHTML = '<div class="empty">No videos match these filters.</div>';
+    return;
+  }
+  g.innerHTML = list.map(c => `
+    <article class="card" data-v="${c.vid}">
+      <div class="th" style="background-image:url('${thumb(c.vid)}')"><span class="rk">#${c.rank}</span><div class="play"><i></i></div></div>
+      <div class="cb">
+        <div class="ti">${esc(c.title)}</div>
+        <div class="ch">${esc(c.channel)}</div>
+        <div class="tags"><span class="tg">${esc(c.topic)}</span><span class="tg level">${esc(c.level)}</span><span class="tg type">${esc(c.type)}</span></div>
+        ${badge(c)}
+        ${c.card_state === 'ready'
+          ? '<ul class="lines">' + c.lines.map(l => '<li>' + esc(l) + '</li>').join('') + '</ul>'
+          : '<div class="draft">English card in progress</div>'}
+        <div class="wk">Class week: ${esc(c.week)}</div>
+      </div>
+    </article>`).join('');
+  [...g.children].forEach(el => el.onclick = () => openCard(el.dataset.v));
+}
+
+const CHECKS = [
+  ['Summary accuracy', 'English summary matches the source-card summary'],
+  ['Title & channel unchanged', 'Video title and channel name were not rewritten'],
+  ['Course link check', 'Fits a BUSS215 week/topic — week mapping coming']
+];
+
+function openCard(v){
+  const c = C.find(x => x.vid === v);
+  if (!c) return;
+  const ok = c.review === 'sample_reviewed';
+  document.getElementById('md').innerHTML = `
+    <div class="ml">
+      <div class="vid" id="vid" style="background-image:url('${thumb(c.vid)}')"><div class="play"><i></i></div></div>
+      <div class="mt">${esc(c.title)}</div>
+      <div class="ch">${esc(c.channel)}</div>
+      <div class="tags" style="margin-top:8px"><span class="tg">${esc(c.topic)}</span><span class="tg level">${esc(c.level)}</span><span class="tg type">${esc(c.type)}</span><span class="tg g">${esc(c.shelf)}</span></div>
+      <div class="sec"><h4>3-line English summary</h4>${
+        c.card_state === 'ready'
+          ? '<ul class="lines">' + c.lines.map(l => '<li>' + esc(l) + '</li>').join('') + '</ul>'
+          : '<div class="draft">English card in progress. See the source text below.</div>'
+      }</div>
+      ${c.why ? '<div class="sec"><h4>Why it is worth watching</h4><div class="why">' + esc(c.why) + '</div></div>' : ''}
+    </div>
+    <div class="mr rv">
+      <h3>${INTERNAL ? 'Human review' : 'Card details'}</h3>
+      <div class="st">${INTERNAL ? badge(c) : '<span class="badge ok">Finished card</span>'}</div>
+      ${INTERNAL ? CHECKS.map(([t, d], i) => {
+        const on = ok && i < 2;
+        return `<div class="ck${on ? ' on' : ''}"><div class="bx">${on ? '✓' : ''}</div><div><b>${t}</b><span>${d}</span></div></div>`;
+      }).join('') : ''}
+      <dl class="meta sec">
+        <dt>Level</dt><dd>${esc(c.level)}</dd>
+        <dt>Type</dt><dd>${esc(c.type)}</dd>
+        <dt>Class week</dt><dd>${esc(c.week)}</dd>
+        <dt>Recommendation</dt><dd>${c.recommenders} people · ${c.rec_months} months (${c.years})</dd>
+      </dl>
+      ${INTERNAL && ok ? '<div class="note">Sample review state for the pilot screen. Course week mapping comes later.</div>' : ''}
+      <div class="src"><details><summary>Source card text (HackerTube, English)</summary><p>${esc(c.summary_en)}</p><p>${esc(c.why_en)}</p></details></div>
+    </div>`;
+  document.getElementById('vid').onclick = function(){
+    this.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + c.vid + '?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="' + esc(c.title) + '"></iframe>';
+    this.style.cursor = 'default';
+  };
+  document.getElementById('ov').classList.add('on');
+}
+function closeCard(){document.getElementById('ov').classList.remove('on'); document.getElementById('md').innerHTML = '';}
+document.getElementById('x').onclick = closeCard;
+document.getElementById('ov').onclick = e => { if (e.target.id === 'ov') closeCard(); };
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCard(); });
+render();
+if (location.hash.startsWith('#v=')) openCard(location.hash.slice(3));
+</script>
+</body>
+</html>
